@@ -7,6 +7,13 @@ if (!canvas) {
 if (!(canvas instanceof HTMLCanvasElement)) {
   throw new Error("Element is not a canvas");
 }
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
 const ctx = canvas.getContext("2d");
+
+const resize = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+};
+
+window.addEventListener("resize", resize);
+resize();
