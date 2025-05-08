@@ -1,5 +1,7 @@
 import "./styles.scss";
 
+import { StarField } from "./utils/StarsField";
+
 const canvas = document.getElementById("canvas");
 if (!canvas) {
   throw new Error("Canvas element not found");
@@ -17,3 +19,12 @@ const resize = () => {
 
 window.addEventListener("resize", resize);
 resize();
+
+const field = new StarField();
+const starStamp = field.getStarStamp();
+
+starStamp.style.position = "absolute";
+starStamp.style.top = "10px";
+starStamp.style.left = "10px";
+
+document.body.appendChild(starStamp);
