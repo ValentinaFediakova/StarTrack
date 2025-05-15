@@ -1,5 +1,4 @@
 import "./styles.scss";
-import { Star } from "./utils/Star";
 
 import { StarField } from "./utils/StarsField";
 
