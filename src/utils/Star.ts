@@ -19,7 +19,15 @@ export class Star {
     this.orbitRadius = this.random(0, maxOrbit);
     this.rotationStep = this.random(0.0005, 0.002);
     this.orbitAngle = this.random(0, Math.PI * 2);
-    this.starSize = this.random(20, 50);
+
+    const zoneForOnlySmallStar = maxOrbit * 0.15;
+
+    if (this.orbitRadius < zoneForOnlySmallStar) {
+      this.starSize = this.random(1, 8);
+    } else {
+      this.starSize = this.random(1, 25);
+    }
+
     this.starAlpha = this.random(0, 1);
   }
 

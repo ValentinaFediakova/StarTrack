@@ -9,7 +9,7 @@ export class StarField {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   private config: Config = {
-    maxStars: 150,
+    maxStars: 1400,
     hue: 217,
   };
   private starStamp: HTMLCanvasElement;
@@ -28,7 +28,7 @@ export class StarField {
   }
 
   generateStarStamp(): HTMLCanvasElement {
-    const starStampCanvasSize = 500;
+    const starStampCanvasSize = 100;
     const radius = starStampCanvasSize / 2;
     const starStampCanvas = document.createElement("canvas");
     starStampCanvas.width = starStampCanvas.height = starStampCanvasSize;
@@ -80,8 +80,18 @@ export class StarField {
     }
   }
 
+  private clearFrame(): void {
+    const ctx = this.ctx;
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 0.8;
+    ctx.fillStyle = `hsla(${this.config.hue},64%,6%,1)`;
+    ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    ctx.globalCompositeOperation = "lighter";
+  }
+
   animate(): void {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.clearFrame();
+
     for (const star of this.stars) {
       star.draw();
     }
