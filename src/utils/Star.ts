@@ -43,6 +43,17 @@ export class Star {
     const x = offsetX + centerX;
     const y = offsetY + centerY;
 
+    const twinkleIntensity = 0.1;
+    const twinklePoss = 0.3; // possibility twinkle
+    const randomNum = Math.random();
+
+    if (randomNum < twinklePoss) {
+      this.starAlpha = Math.max(0, this.starAlpha - twinkleIntensity);
+    } else if (randomNum < twinklePoss * 2) {
+      this.starAlpha = Math.min(1, this.starAlpha + twinkleIntensity);
+    }
+
+    commonCtx.globalAlpha = this.starAlpha;
     commonCtx.drawImage(
       starStamp,
       x - this.starSize / 2,
@@ -50,6 +61,7 @@ export class Star {
       this.starSize,
       this.starSize
     );
+    commonCtx.globalAlpha = 1;
 
     this.orbitAngle += this.rotationStep;
   }
