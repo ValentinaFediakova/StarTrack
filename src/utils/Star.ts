@@ -17,17 +17,9 @@ export class Star {
     const canvas = this.field.getCanvas();
     const maxOrbit = Math.hypot(canvas.width, canvas.height) / 2;
     this.orbitRadius = this.random(0, maxOrbit);
-    this.rotationStep = this.random(0.0005, 0.002);
+    this.rotationStep = this.random(this.orbitRadius) / 200000;
     this.orbitAngle = this.random(0, Math.PI * 2);
-
-    const zoneForOnlySmallStar = maxOrbit * 0.15;
-
-    if (this.orbitRadius < zoneForOnlySmallStar) {
-      this.starSize = this.random(1, 8);
-    } else {
-      this.starSize = this.random(1, 25);
-    }
-
+    this.starSize = this.random(60, this.orbitRadius) / 12;
     this.starAlpha = this.random(0, 1);
   }
 
