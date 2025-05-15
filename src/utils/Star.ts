@@ -17,7 +17,7 @@ export class Star {
     const canvas = this.field.getCanvas();
     const maxOrbit = Math.hypot(canvas.width, canvas.height) / 2;
     this.orbitRadius = this.random(0, maxOrbit);
-    this.rotationStep = this.random(this.orbitRadius) / 200000;
+    this.rotationStep = this.random(this.orbitRadius) / 300000;
     this.orbitAngle = this.random(0, Math.PI * 2);
     this.starSize = this.random(60, this.orbitRadius) / 12;
     this.starAlpha = this.random(0, 1);
@@ -43,8 +43,8 @@ export class Star {
     const x = offsetX + centerX;
     const y = offsetY + centerY;
 
-    const twinkleIntensity = 0.1;
-    const twinklePoss = 0.3; // possibility twinkle
+    const twinkleIntensity = 0.2;
+    const twinklePoss = 0.1; // possibility twinkle
     const randomNum = Math.random();
 
     if (randomNum < twinklePoss) {
