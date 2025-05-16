@@ -18,5 +18,13 @@ const resize = () => {
 window.addEventListener("resize", resize);
 resize();
 
+const starsCountInput = document.getElementById(
+  "starsCount"
+) as HTMLInputElement;
+
 const field = new StarField(canvas);
 field.start();
+
+starsCountInput.addEventListener("change", () => {
+  field.updateStarCount(Number(starsCountInput.value));
+});

@@ -8,7 +8,8 @@ interface Config {
 export class StarField {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
-  private config: Config = {
+  private animationId: number | null = null;
+  public config: Config = {
     maxStars: 1400,
     hue: 217,
   };
@@ -75,6 +76,8 @@ export class StarField {
   }
 
   initStars() {
+    this.stars = [];
+
     for (let i = 0; i < this.config.maxStars; i++) {
       this.stars.push(new Star(this));
     }
@@ -96,10 +99,26 @@ export class StarField {
       star.draw();
     }
 
-    requestAnimationFrame(this.animate);
+    this.animationId = requestAnimationFrame(this.animate);
   }
 
   public start() {
-    requestAnimationFrame(this.animate);
+    if (this.animationId === null) {
+      this.animationId = requestAnimationFrame(this.animate);
+    }
+  }
+
+  stop() {
+    if (this.animationId !== null) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = null;
+    }
+  }
+
+  public updateStarCount(n: number) {
+    this.config.maxStars = n;
+    this.stop();
+    this.initStars();
+    this.start();
   }
 }

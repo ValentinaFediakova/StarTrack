@@ -1,6 +1,47 @@
 @use "reset";
 
+@font-face {
+  font-family: "Outerorbit";
+  src: url("../src/fonts/outerorbit-font/Outerorbit-rggRL.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 body {
   background: #060e1b;
   overflow: hidden;
+  position: relative;
+  font-family: "Outerorbit";
+}
+
+.controls {
+  position: absolute;
+  // top: 15px;
+  // right: 15px;
+  top: 198px;
+  right: 50%;
+  width: fit-content;
+  background-color: aliceblue;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.controls__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.controls__title {
+  padding-top: 3px;
+}
+
+.controls__input {
+  font-family: "Outerorbit";
+  margin-left: 15px;
+  line-height: 27px;
+  height: 24px;
+  padding: 1px 0 0 8px;
 }
