@@ -26,6 +26,8 @@ const starsColorInput = document.getElementById(
   "starsColor"
 ) as HTMLInputElement;
 
+const skyColorInput = document.getElementById("skyColor") as HTMLInputElement;
+
 const field = new StarField(canvas);
 field.start();
 
@@ -34,5 +36,9 @@ starsCountInput.addEventListener("change", () => {
 });
 
 starsColorInput.addEventListener("input", () => {
-  field.updateColorStar(starsColorInput.value);
+  field.updateStarColor(starsColorInput.value);
+});
+
+skyColorInput.addEventListener("input", () => {
+  field.updateBgColor(skyColorInput.value);
 });

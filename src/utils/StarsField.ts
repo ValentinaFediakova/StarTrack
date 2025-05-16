@@ -119,18 +119,25 @@ export class StarField {
     }
   }
 
-  public updateStarCount(n: number) {
-    this.config.maxStars = n;
+  update() {
     this.stop();
     this.initStars();
     this.start();
   }
 
-  public updateColorStar(color: string) {
+  public updateStarCount(n: number) {
+    this.config.maxStars = n;
+    this.update();
+  }
+
+  public updateStarColor(color: string) {
     this.config.starColor = color;
     this.starStamp = this.generateStarStamp();
-    this.stop();
-    this.initStars();
-    this.start();
+    this.update();
+  }
+
+  public updateBgColor(bgColor: string) {
+    this.config.bgColor = bgColor;
+    this.update();
   }
 }
