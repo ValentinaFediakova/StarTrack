@@ -2,7 +2,9 @@ import { Star } from "./Star";
 
 interface Config {
   maxStars: number;
-  hue: number;
+  starColor: string;
+  glowColor: string;
+  bgColor: string;
 }
 
 export class StarField {
@@ -11,7 +13,9 @@ export class StarField {
   private animationId: number | null = null;
   public config: Config = {
     maxStars: 1400,
-    hue: 217,
+    starColor: "rgb(33, 72, 135)",
+    glowColor: "rgba(6, 13, 25, 1)",
+    bgColor: "rgba(6, 13, 25, 1)",
   };
   private starStamp: HTMLCanvasElement;
   private stars: Star[] = [];
@@ -47,8 +51,8 @@ export class StarField {
     );
 
     grad.addColorStop(0.025, "#fff");
-    grad.addColorStop(0.1, `hsl(${this.config.hue},61%,33%)`);
-    grad.addColorStop(0.25, `hsl(${this.config.hue},64%, 6%)`);
+    grad.addColorStop(0.1, this.config.starColor);
+    grad.addColorStop(0.25, this.config.glowColor);
     grad.addColorStop(1, "transparent");
 
     starStampCtx.fillStyle = grad;
@@ -87,7 +91,7 @@ export class StarField {
     const ctx = this.ctx;
     ctx.globalCompositeOperation = "source-over";
     ctx.globalAlpha = 0.8;
-    ctx.fillStyle = `hsla(${this.config.hue},64%,6%,1)`;
+    ctx.fillStyle = this.config.bgColor;
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     ctx.globalCompositeOperation = "lighter";
   }
@@ -117,6 +121,14 @@ export class StarField {
 
   public updateStarCount(n: number) {
     this.config.maxStars = n;
+    this.stop();
+    this.initStars();
+    this.start();
+  }
+
+  public updateColorStar(color: string) {
+    this.config.starColor = color;
+    this.starStamp = this.generateStarStamp();
     this.stop();
     this.initStars();
     this.start();

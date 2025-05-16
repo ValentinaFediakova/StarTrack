@@ -19,7 +19,7 @@ body {
   position: absolute;
   // top: 15px;
   // right: 15px;
-  top: 198px;
+  top: 111px;
   right: 50%;
   width: fit-content;
   background-color: aliceblue;
@@ -27,11 +27,16 @@ body {
   border-radius: 7px;
 }
 
-.controls__wrap {
+.controls__input-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
 }
 
 .controls__title {
@@ -44,4 +49,9 @@ body {
   line-height: 27px;
   height: 24px;
   padding: 1px 0 0 8px;
+
+  &_color {
+    padding: 0;
+    width: 67px;
+  }
 }

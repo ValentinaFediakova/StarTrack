@@ -22,9 +22,17 @@ const starsCountInput = document.getElementById(
   "starsCount"
 ) as HTMLInputElement;
 
+const starsColorInput = document.getElementById(
+  "starsColor"
+) as HTMLInputElement;
+
 const field = new StarField(canvas);
 field.start();
 
 starsCountInput.addEventListener("change", () => {
   field.updateStarCount(Number(starsCountInput.value));
+});
+
+starsColorInput.addEventListener("input", () => {
+  field.updateColorStar(starsColorInput.value);
 });
