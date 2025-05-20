@@ -26,6 +26,10 @@ const starsColorInput = document.getElementById(
   "starsColor"
 ) as HTMLInputElement;
 
+const starsSpeedInput = document.getElementById(
+  "starsSpeed"
+) as HTMLInputElement;
+
 const skyColorInput = document.getElementById("skyColor") as HTMLInputElement;
 
 const field = new StarField(canvas);
@@ -41,4 +45,8 @@ starsColorInput.addEventListener("input", () => {
 
 skyColorInput.addEventListener("input", () => {
   field.updateBgColor(skyColorInput.value);
+});
+
+starsSpeedInput.addEventListener("change", () => {
+  field.updateSpeedStars(Number(starsSpeedInput.value));
 });

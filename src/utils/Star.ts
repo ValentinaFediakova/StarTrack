@@ -63,6 +63,10 @@ export class Star {
     );
     commonCtx.globalAlpha = 1;
 
-    this.orbitAngle += this.rotationStep;
+    this.orbitAngle += this.rotationStep * this.field.config.speedFactor;
+  }
+
+  public updateSpeedStars(factor: number) {
+    this.field.config.speedFactor = factor;
   }
 }

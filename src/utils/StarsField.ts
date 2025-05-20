@@ -5,6 +5,7 @@ interface Config {
   starColor: string;
   glowColor: string;
   bgColor: string;
+  speedFactor: number;
 }
 
 export class StarField {
@@ -16,6 +17,7 @@ export class StarField {
     starColor: "rgb(33, 72, 135)",
     glowColor: "rgba(6, 13, 25, 1)",
     bgColor: "rgba(6, 13, 25, 1)",
+    speedFactor: 1,
   };
   private starStamp: HTMLCanvasElement;
   private stars: Star[] = [];
@@ -139,5 +141,11 @@ export class StarField {
   public updateBgColor(bgColor: string) {
     this.config.bgColor = bgColor;
     this.update();
+  }
+
+  public updateSpeedStars(speed: number) {
+    for (let i = 0; i < this.config.maxStars; i++) {
+      this.stars[i].updateSpeedStars(speed);
+    }
   }
 }
