@@ -19,7 +19,7 @@ body {
   position: absolute;
   // top: 15px;
   // right: 15px;
-  top: 111px;
+  top: 1px;
   right: 50%;
   width: fit-content;
   background-color: aliceblue;
@@ -36,6 +36,36 @@ body {
 
   &:last-child {
     margin-bottom: 0px;
+  }
+}
+
+.controls__button-wrap {
+}
+
+.controls__button-innerwrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controls__button {
+  font-family: "Outerorbit";
+  background-color: aliceblue;
+  color: #03102fc2;
+  border: 1px solid #03102fc2;
+  outline: none;
+  height: 29px;
+  border-radius: 5px;
+  line-height: 31px;
+  padding: 0 10px;
+
+  &_active {
+    background-color: #03102fc2;
+    color: aliceblue;
+  }
+
+  &_left {
+    margin-right: 21px;
   }
 }
 
