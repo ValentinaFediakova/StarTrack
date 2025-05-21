@@ -1,11 +1,14 @@
 import { Star } from "./Star";
 
+type Mode = "orbit" | "towardsViewer";
+
 interface Config {
   maxStars: number;
   starColor: string;
   glowColor: string;
   bgColor: string;
   speedFactor: number;
+  mode: Mode;
 }
 
 export class StarField {
@@ -18,6 +21,7 @@ export class StarField {
     glowColor: "rgba(6, 13, 25, 1)",
     bgColor: "rgba(6, 13, 25, 1)",
     speedFactor: 1,
+    mode: "orbit",
   };
   private starStamp: HTMLCanvasElement;
   private stars: Star[] = [];
@@ -147,5 +151,10 @@ export class StarField {
     for (let i = 0; i < this.config.maxStars; i++) {
       this.stars[i].updateSpeedStars(speed);
     }
+  }
+
+  public updateMode(mode: Mode) {
+    this.config.mode = mode;
+    this.update();
   }
 }

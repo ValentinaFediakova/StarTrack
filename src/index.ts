@@ -30,6 +30,10 @@ const starsSpeedInput = document.getElementById(
   "starsSpeed"
 ) as HTMLInputElement;
 
+const orbitModeButton = document.getElementById("orbitMode");
+
+const towardsViewerModeButton = document.getElementById("towardsViewerMode");
+
 const skyColorInput = document.getElementById("skyColor") as HTMLInputElement;
 
 const field = new StarField(canvas);
@@ -49,4 +53,16 @@ skyColorInput.addEventListener("input", () => {
 
 starsSpeedInput.addEventListener("change", () => {
   field.updateSpeedStars(Number(starsSpeedInput.value));
+});
+
+orbitModeButton?.addEventListener("click", () => {
+  field.updateMode("orbit");
+  towardsViewerModeButton?.classList.remove("controls__button_active");
+  orbitModeButton.classList.add("controls__button_active");
+});
+
+towardsViewerModeButton?.addEventListener("click", () => {
+  field.updateMode("towardsViewer");
+  orbitModeButton?.classList.remove("controls__button_active");
+  towardsViewerModeButton.classList.add("controls__button_active");
 });
