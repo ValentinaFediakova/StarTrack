@@ -18,6 +18,25 @@ const resize = () => {
 window.addEventListener("resize", resize);
 resize();
 
+const controls = document.getElementById("controls");
+const controlsButtonToggle = document.getElementById("controlsButtonToggle");
+
+controlsButtonToggle?.addEventListener("click", () => {
+  if (controls && controls.classList.contains("controls_disappear")) {
+    controls.classList.remove("controls_disappear");
+    controlsButtonToggle.classList.remove(
+      "controls__button-toggle_controls-disappear"
+    );
+  } else {
+    if (controls) {
+      controls.classList.add("controls_disappear");
+      controlsButtonToggle.classList.add(
+        "controls__button-toggle_controls-disappear"
+      );
+    }
+  }
+});
+
 const starsCountInput = document.getElementById(
   "starsCount"
 ) as HTMLInputElement;
